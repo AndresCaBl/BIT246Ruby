@@ -37,8 +37,7 @@ class Ball
   
   #Define a method to be used to generate random answers
   def get_fortune
-    randomNo = 1 + rand(6)
-    
+    randomNo = 1 + rand(10)
     #Assign an answer based on the randomly generated number 
     case randomNo
       when 1
@@ -52,15 +51,30 @@ class Ball
       when 5
         $prediction = "unlikely"
       when 6
+        $prediction = "It is your destiny"
+      when 6
+       $prediction = "Stop thinking and do it"
+      when 7
+        $prediction = "Never in a thousand years"
+      when 8
+        $prediction = "I can't answer that"
+      when 9
+        $prediction = "You can bet on it"
+      when 10
         $prediction = "unknown"
     end
-    
   end
   
   #This method displays the 8-Ball greeting message
   def say_greeting
     greeting = "\t\t  Welcome to the Virtual Crazy 8-Ball game!" +
-    "\n\n\n\n\n\n\n\n\n\n\n\n\nPress Enter to " +
+      "\n\n\nThis is how you play:"+
+      "\n\n1. When the game tells you, enter a yes or no question"+
+      "\n2. Press enter when you have entered the question"+
+      "\n3. Check the answer"+
+      "\n4. Press enter to continue playing"+
+      "\n5. Select if you want to quit or continue"+
+    "\n\n\nPress Enter to " +
                "continue. \n\n: "
     print greeting
   end
@@ -78,7 +92,9 @@ class Ball
 
   #This method displays the 8-Balls closing message
   def say_goodbye
-    goodbye = "Thanks for playing the Virtual Crazy 8-Ball game!\n\n"
+    goodbye = "Thanks for playing the Virtual Crazy 8-Ball game!\n\n"+
+      "Andres Cardenas"+
+      "\nwww.MelbournePolytechnic.com"
     puts goodbye
   end
 
@@ -120,6 +136,7 @@ if answer == "n"  #See if the player elected not to play
 
   #Invite the player to return and play again
   puts "Okay, perhaps another time. \n\n"
+  Eight_Ball.say_goodbye
 
 else  #The player has elected to play the game
 
@@ -133,8 +150,17 @@ else  #The player has elected to play the game
     
     #Call upon the method responsible for prompting the player to ask a 
     #question
-    Eight_Ball.get_question
-  
+    questions = ""
+    until questions != ""
+      Eight_Ball.get_question
+
+      questions = STDIN.gets
+      questions.chop!
+
+    end
+
+    #questions = ""
+
     #Call upon the method responsible for generating an answer
     Eight_Ball.get_fortune
   
