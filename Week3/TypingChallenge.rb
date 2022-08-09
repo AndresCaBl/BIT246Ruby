@@ -19,7 +19,7 @@
 class Screen
 
   def cls  #Define a method that clears the display area
-    puts ("\n" * 25)  #Scroll the screen 25 times
+    puts ("\n" * 20)  #Scroll the screen 25 times
     puts "\a"  #Make a little noise to get the player's attention
   end
   
@@ -55,11 +55,19 @@ class Test
 
     #Display the game's instructions
     # CHANGED TO 10 SENTENCES INSTEAD OF 5
+    # Added grading scale
     puts %Q{    This test consists of a series of 10 typing challenges.
     The challenge sentences are presented one at a time. To respond 
     correctly, you must retype each sentence exactly as shown and press 
     the Enter key. Your grade will be displayed at the end of the test.
-    \n\n\n\n\n\n\n\n\n
+    \n\n
+    The grading system is the following:
+    A if you get 9 or 10 sentences correctly.
+    B if you get 8 sentences correctly.
+    C if you get 7 sentences correctly.
+    D if you get 6 sentences correctly.
+    F if you get 5 or less sentences correctly.
+    \n\n
     Press Enter to continue.\n\n}
 
     Console_Screen.pause       #Pause the game
@@ -68,53 +76,67 @@ class Test
  
   #Define a method to be used to present typing challenges
   def present_test(challenge)
-    
-    Console_Screen.cls       #Clear the display area
-    print challenge + "\n\n: "  #Display the challenge sentence
-    result = STDIN.gets  #Collect the player's input
-    result.chop!         #Remove the end of line marker
-    
-    #Analyze the player input and see if it is correct
-    if challenge == result then
-    
-      #Keep track of the number of correctly retyped challenge sentences
-      $noRight += 1  
+    result = ""   #initialize result variable to be used un the until loop
+    until result != "" do   #repeat the loop until result is not empty
       Console_Screen.cls       #Clear the display area
-      #Keep the player informed
-      print "Correct!\n\nPress Enter to continue." 
-      Console_Screen.pause       #Pause the game
-      
-    else  
-    
-      Console_Screen.cls       #Clear the display area
-      #Keep the player informed
-      print "Incorrect!\n\nPress Enter to continue."
-      Console_Screen.pause       #Clear the game
-      
+      print challenge + "\n\n: "  #Display the challenge sentence
+      result = STDIN.gets  #Collect the player's input
+      result.chop!         #Remove the end of line marker
+      #Analyze the player input and see if it is empty
+      if result == "" then
+        Console_Screen.cls       #Clear the display area
+        print "Empty answer!\n\nPress Enter to try again."
+        Console_Screen.pause       #Pause the game
+      elsif challenge == result then
+        #Keep track of the number of correctly retyped challenge sentences
+        $noRight += 1
+        Console_Screen.cls       #Clear the display area
+        #Keep the player informed
+        print "Correct!\n\nPress Enter to continue."
+        Console_Screen.pause       #Pause the game
+      else
+        Console_Screen.cls       #Clear the display area
+        #Keep the player informed
+        print "Incorrect!\n"
+        #Display players wrong answer and then the correct sentence
+        puts "Your answer was: "+result
+        puts "The correct sentence is: "+challenge
+        print "Press Enter to continue."
+        Console_Screen.pause       #Clear the game
+      end
     end
-    
   end
 
   #Define a method to be used to display test results
   def determine_grade
   
     Console_Screen.cls       #Clear the display area  
-  
-    #To pass the test the player must correctly retype 6 sentences
-    if $noRight >= 6 then
-    
-      #Inform the player of the good news
+
+    #Grade base solution using letters A, B, C, D, F with a case block
+    case
+    when ($noRight.between?(0,5))
       print "You retyped " + $noRight.to_s + " sentence(s) correctly. "
-      puts "You have passed the typing test!\n\nPress Enter to continue."
-      
-    else  #The player has failed the test
-    
-      #Inform the player of the bad news
+      puts "Your grade is F.\n\nPress Enter to continue."
+    when ($noRight.equal?(6))
       print "You retyped " + $noRight.to_s + " sentence(s) correctly. "
-      puts "You have failed the typing test!\n\nPress Enter to continue."
-      
+      puts "Your grade is D.\n\nPress Enter to continue."
+    when ($noRight.equal?(7))
+      print "You retyped " + $noRight.to_s + " sentence(s) correctly. "
+      puts "Your grade is C.\n\nPress Enter to continue."
+    when ($noRight.equal?(8))
+      print "You retyped " + $noRight.to_s + " sentence(s) correctly. "
+      puts "Your grade is B.\n\nPress Enter to continue."
+    when ($noRight.between?(9,10))
+      print "You retyped " + $noRight.to_s + " sentence(s) correctly. "
+      puts "Your grade is A.\n\nPress Enter to continue."
+    else
+      puts"Invalid Result!"
+
     end
-    
+
+    #To pass the test the player must correctly retype 6 sentence
+
+
   end
 
 end
