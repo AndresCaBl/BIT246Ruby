@@ -54,7 +54,8 @@ class Test
     puts "\t\t\tInstructions:\n\n"  #Display a heading
 
     #Display the game's instructions
-    puts %Q{    This test consists of a series of 5 typing challenges. 
+    # CHANGED TO 10 SENTENCES INSTEAD OF 5
+    puts %Q{    This test consists of a series of 10 typing challenges.
     The challenge sentences are presented one at a time. To respond 
     correctly, you must retype each sentence exactly as shown and press 
     the Enter key. Your grade will be displayed at the end of the test.
@@ -99,8 +100,8 @@ class Test
   
     Console_Screen.cls       #Clear the display area  
   
-    #To pass the test the player must correctly retype 3 sentences
-    if $noRight >= 3 then
+    #To pass the test the player must correctly retype 6 sentences
+    if $noRight >= 6 then
     
       #Inform the player of the good news
       print "You retyped " + $noRight.to_s + " sentence(s) correctly. "
@@ -171,10 +172,15 @@ else  #The player wants to take the test
   Typing_Test.present_test "In the end there can be only one."
   Typing_Test.present_test "Once a great plague swept across the land."
   Typing_Test.present_test "Welcome to Ruby Principles of Ruby Programming"
-  Typing_Test.present_test "There are very few problems in the world " +
-  "that enough M&Ms cannot fix."
-  Typing_Test.present_test "Perhaps today is a good day to die. Fight " +
-  "beside me and let us die together."
+  Typing_Test.present_test "There are very few problems in the world that enough M&Ms cannot fix."
+  Typing_Test.present_test "Perhaps today is a good day to die. Fight beside me and let us die together."
+
+  #Adding 5 extra sentences
+  Typing_Test.present_test "How many times do i have to tell you?"
+  Typing_Test.present_test "For each letter you must present your results."
+  Typing_Test.present_test "I don't want to die tomorrow knowing i could've have a piece of cake tonight."
+  Typing_Test.present_test "When you think about it, is not as bad as it sounds."
+  Typing_Test.present_test "I agree to the terms and conditions."
 
   #Notify the player of the results by executing the Test object's 
   #display_instructions method
