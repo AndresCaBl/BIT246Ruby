@@ -10,6 +10,8 @@
 #              through the development of a computer typing test that
 #              evaluates the player's typing skills.
 #
+# Modified by: Andres Cardenas
+# Date:        09/08/2022
 #--------------------------------------------------------------------------
 
 
