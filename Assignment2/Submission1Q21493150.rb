@@ -97,6 +97,6 @@ Console_s.say_goodbye #prints las message
 
 
 =begin
-
-/Users/andrescardenas/Documents/GitHub/BIT246Ruby/Assignment2
+/Users/andrescardenas/Documents/GitHub/BIT246Ruby
+Assignment2
 =end
