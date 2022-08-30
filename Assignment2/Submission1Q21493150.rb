@@ -6,6 +6,7 @@
 # Date: 27th August, 2022
 #
 # Description: This program will look for a folder given by an user in a directory given by an user
+#              The user will be required to enter first the path and second the folder name to look for
 #              If found, user will be shown folder contents
 #              If not found, error message displayed
 #
@@ -52,7 +53,7 @@ class Folder_Handling
       STDIN.gets  #Execute the STDIN class's gets method to pause script
       display_folder_content(dir)
       else
-        print ("Error: Folder not found!\nError ID: s1496150AndresC") #if folder not found, print error message
+        print ("Error: The folder or path was not found!\nError ID: s1496150AndresC") #if folder not found, print error message
       end
   end
 
@@ -82,21 +83,16 @@ Console_s.say_greeting  #print program instructions
 Console_s.pause
 
 print "Enter the path to search\n"
-f_path = STDIN.gets  #Collect users input
+f_path = STDIN.gets  #Collect users input for path
 f_path.chop!  #Remove any extra characters appended to the string
 
 print "Enter the folder name to search\n"
-f_name = STDIN.gets  #Collect users input
+f_name = STDIN.gets  #Collect users input for folder name
 f_name.chop!  #Remove any extra characters appended to the string
 
-f_search = f_path+"/"+f_name
+f_search = f_path+"/"+f_name  #concatenate both inputs into one string to search for
 
-Folder_new.folder_check(f_search)
+Folder_new.folder_check(f_search)   #uses method folder_check to look for folder. Passes on strong from user
 
 Console_s.say_goodbye #prints las message
 
-
-=begin
-/Users/andrescardenas/Documents/GitHub/BIT246Ruby
-Assignment2
-=end
