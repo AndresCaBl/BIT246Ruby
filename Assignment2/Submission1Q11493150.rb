@@ -6,10 +6,10 @@
 # Date: 23rd August, 2022
 #
 # Description: This is the logic for Assignment 2. This program will:
-#   Verify the file exist
-#   Read the file and check if it contains the phrase "Ruby on Rails"
-#   If exist, file contents will be printed to screen
-#   If it doesnt, it will print an error message
+#              Verify the file exist
+#              Read the file and check if it contains the phrase "Ruby on Rails"
+#              If exist, file contents will be printed to screen
+#              If it doesnt, it will print an error message
 #
 # Requirements: .txt file must be in same directory
 #
