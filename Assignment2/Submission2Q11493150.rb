@@ -66,8 +66,6 @@ end
 #this class will handle all related searches in the file
 class Search_file
 
-
-
   # creates a new hash with the files paths and paragraphs
   #
   # @param [String, #read] file path
@@ -92,7 +90,6 @@ class Search_file
       files_names(rel_hash, terms)
     end
   end
-
 
 
   # Count the number of .docx files in the hash
@@ -132,7 +129,6 @@ class Search_file
   end
 
 
-
   # Method to count the number of times the term in is the file
   #
   # @param [Hash, #read] hash created by search_in_file containing array of paragraphs
@@ -152,6 +148,7 @@ class Search_file
 
   end
 
+
   # Creates a new .docx file with the assigned string
   #
   # @param [String, #read] file path
@@ -166,10 +163,6 @@ class Search_file
   end
 
 end
-
-
-
-
 
 #-------Main Logic--------#
 
